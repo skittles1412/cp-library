@@ -19,6 +19,10 @@ jobs:
       - name: Install dependencies
         run: pip3 install -U git+https://github.com/skittles1412/oj-tools-verification-helper.git
 
+      - uses: actions/cache@v4
+        with:
+          path: .verify-helper/cache
+
       - name: Run tests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
