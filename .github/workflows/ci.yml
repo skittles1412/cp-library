@@ -1,4 +1,4 @@
-name: verify
+name: CI
 
 on:
   push:
@@ -54,3 +54,11 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  clang-format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: clang-format --dry-run --Werror **/*.{hpp,cpp}

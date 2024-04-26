@@ -75,9 +75,12 @@ struct PFact {
         return ans;
     }
 
-private:
+   private:
     template <typename Cb>
-    void enumerate_factors(int cmul, int ind, const vector<pair<int, int>>& pf, const Cb& cb) const {
+    void enumerate_factors(int cmul,
+                           int ind,
+                           const vector<pair<int, int>>& pf,
+                           const Cb& cb) const {
         if (ind == sz(pf)) {
             cb(cmul);
             return;

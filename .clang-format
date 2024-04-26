@@ -1,0 +1,9 @@
+BasedOnStyle: Chromium
+TabWidth: 4
+IndentWidth: 4
+FixNamespaceComments: true
+SpaceBeforeCpp11BracedList: true
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLambdasOnASingleLine: Empty
+LambdaBodyIndentation: OuterScope
+SortIncludes: false
