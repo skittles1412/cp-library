@@ -21,7 +21,8 @@ jobs:
 
       - uses: actions/cache@v4
         with:
-          path: .verify-helper/cache
+          path: .verify-helper
+          key: verify-helper-cache # we should be able to always cache this
 
       - name: Run tests
         env:
