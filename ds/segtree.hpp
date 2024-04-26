@@ -3,7 +3,9 @@
 
 #include "template.hpp"
 
-template <typename Node_T, typename Operation = plus<Node_T>, bool debug_assertions = true>
+template <typename Node_T,
+          typename Operation = plus<Node_T>,
+          bool debug_assertions = true>
 class SegTree {
    private:
     static constexpr Node_T noT {};
@@ -93,8 +95,7 @@ class SegTree {
         if (predicate(npref)) {
             return bsearch<Predicate, first>(lc, l, mid, pref, predicate);
         }
-        return bsearch<Predicate, true>(rc, mid + 1, r, npref,
-                                        predicate);
+        return bsearch<Predicate, true>(rc, mid + 1, r, npref, predicate);
     }
 
     template <typename Predicate>
@@ -151,7 +152,9 @@ class SegTree {
     }
 
     void update_set(int ind, const Node_T& x) {
-        update(ind, [&](Node_T& t) { t = x; });
+        update(ind, [&](Node_T& t) {
+            t = x;
+        });
     }
 
     /**

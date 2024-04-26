@@ -23,4 +23,4 @@ struct PSA {
     }
 };
 
-#endif //CP_LIBRARY_PSA
+#endif  // CP_LIBRARY_PSA
