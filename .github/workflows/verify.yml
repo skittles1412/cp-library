@@ -24,6 +24,9 @@ jobs:
           path: .verify-helper
           key: verify-helper-cache # we should be able to always cache this
 
+      - run: |
+          cat .verify-helper/timestamps.remote.json
+
       - name: Run tests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
