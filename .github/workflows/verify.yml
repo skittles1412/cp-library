@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-python@v4
 
       - name: Install dependencies
-        run: pip3 install -U git+git+https://github.com/skittles1412/oj-tools-verification-helper.git
+        run: pip3 install -U git+https://github.com/skittles1412/oj-tools-verification-helper.git
 
       - name: Run tests
         env:
