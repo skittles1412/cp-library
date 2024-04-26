@@ -4,9 +4,10 @@
 #include "template.hpp"
 
 struct DSU {
+    int comps;
     vector<int> p;
 
-    explicit DSU(int n) : p(n, -1) {}
+    explicit DSU(int n) : comps(n), p(n, -1) {}
 
     int find(int u) {
         return p[u] < 0 ? u : (p[u] = find(p[u]));
@@ -27,6 +28,7 @@ struct DSU {
         }
         p[v] += p[u];
         p[u] = v;
+        comps--;
         return true;
     }
 
