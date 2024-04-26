@@ -169,4 +169,58 @@ vector<int> comp_next_ge(vector<T> arr) {
     return reverse_indices(comp_prev_ge(arr));
 }
 
+template <typename Cb>
+struct CmpByKey {
+    Cb cb;
+
+    explicit CmpByKey(const Cb& cb) : cb(cb) {}
+
+    template <typename T>
+    bool operator()(const T& a, const T& b) const {
+        return cb(a) < cb(b);
+    }
+};
+
+/**
+ * outputs will be in the range [0, m), returns m
+ */
+int coord_comp(const vector<int*>& arr) {
+    vector<int> vals;
+    for (auto& a : arr) {
+        vals.push_back(*a);
+    }
+
+    sort(begin(vals), end(vals));
+    vals.erase(unique(begin(vals), end(vals)), end(vals));
+
+    for (auto& a : arr) {
+        *a = int(lower_bound(begin(vals), end(vals), *a) - begin(vals));
+    }
+
+    return sz(vals);
+}
+
+/**
+ * outputs will be in the range [0, m), returns {m, result}
+ */
+template <typename T>
+pair<int, vector<int>> coord_comp(const vector<T>& arr) {
+    vector<T> vals = arr;
+    sort(begin(vals), end(vals));
+    vals.erase(unique(begin(vals), end(vals)), end(vals));
+
+    vector<int> ans;
+    for (auto& a : arr) {
+        ans.push_back(
+            int(lower_bound(begin(vals), end(vals), a) - begin(vals)));
+    }
+
+    return {sz(vals), ans};
+}
+
+template <typename T>
+bool on(T mask, int bit) {
+    return (mask >> bit) & 1;
+}
+
 #endif  // CP_LIBRARY_UTILS
