@@ -4,7 +4,8 @@
 struct PFact {
     vector<int> mdiv, primes;
 
-    PFact(int n) : mdiv(n + 1, -1) {
+    PFact() {}
+    explicit PFact(int n) : mdiv(n + 1, -1) {
         for (int i = 2; i <= n; i++) {
             if (mdiv[i] == -1) {
                 primes.push_back(i);

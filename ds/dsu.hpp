@@ -7,6 +7,7 @@ struct DSU {
     int comps;
     vector<int> p;
 
+    DSU() {}
     explicit DSU(int n) : comps(n), p(n, -1) {}
 
     int find(int u) {
