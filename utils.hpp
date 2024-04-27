@@ -79,6 +79,12 @@ bool is_palin(const T& arr) {
     return arr == reversed(arr);
 }
 
+template <typename T>
+T sorted(T arr) {
+    sort(begin(arr), end(arr));
+    return arr;
+}
+
 template <typename T, bool STRICT>
 vector<int> comp_prev_helper(const vector<T>& arr) {
     int n = sz(arr);
