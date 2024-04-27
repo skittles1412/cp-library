@@ -7,6 +7,7 @@ template <typename T>
 struct PSA {
     vector<T> psum;
 
+    PSA() {}
     template <typename U>
     explicit PSA(const vector<U>& arr) {
         psum.push_back(0);

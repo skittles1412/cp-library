@@ -1,27 +1,21 @@
 #ifndef CP_LIBRARY_TREE
 #define CP_LIBRARY_TREE
 
-#include "ds/sparse_table.hpp"
 #include "template.hpp"
-
-vector<vector<int>> edges_to_adj(int n, const vector<pair<int, int>>& edges) {
-    vector<vector<int>> graph(n);
-
-    for (auto& [u, v] : edges) {
-        graph[u].push_back(v);
-        graph[v].push_back(u);
-    }
-
-    return graph;
-}
+#include "graphs/utils.hpp"
+#include "ds/sparse_table.hpp"
 
 struct Tree {
     int n, root;
     vector<int> depth, par, tin, tout, ord;
     vector<vector<int>> graph, graph_ch;
 
+    Tree() {}
     Tree(int n, const vector<pair<int, int>>& edges, int root = 0)
-        : Tree(n, edges_to_adj(n, edges), root) {}
+        : Tree(n, edges_to_adj<true>(n, edges), root) {}
+    /**
+     * graph should be undirected
+     */
     Tree(int n, const vector<vector<int>>& graph, int root = 0)
         : n(n),
           root(root),

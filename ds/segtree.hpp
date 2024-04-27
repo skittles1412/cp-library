@@ -16,7 +16,7 @@ class SegTree {
 
     vector<Node_T> v, arr;
 
-    constexpr SegTree() : n(0) {}
+    SegTree() {}
     explicit SegTree(const vector<Node_T>& _arr,
                      const Operation& _operation = Operation())
         : n(sz(_arr)), operation(_operation), v(4 * n), arr(_arr) {

@@ -19,6 +19,7 @@ struct LazySegTree {
     vector<T> v, arr;
     vector<Lazy> lazy;
 
+	LazySegTree() {}
     explicit LazySegTree(const vector<T>& arr,
                          const Operation& operation = Operation())
         : n(sz(arr)),
