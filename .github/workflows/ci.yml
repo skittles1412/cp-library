@@ -61,4 +61,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: clang-format --dry-run --Werror **/*.{hpp,cpp}
+      - run: clang-format-14 --dry-run --Werror **/*.{hpp,cpp}
