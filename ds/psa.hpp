@@ -24,4 +24,28 @@ struct PSA {
     }
 };
 
+template <typename T>
+struct RPSA {
+    vector<T> psum;
+
+    RPSA() {}
+    explicit RPSA(int n) : psum(n) {}
+
+    /**
+     * inclusive, exclusive
+     */
+    void update_add(int l, int r, T x) {
+        psum[l] += x;
+        if (r < sz(psum)) {
+            psum[r] -= x;
+        }
+    }
+
+    vector<T> build() const {
+        auto ans = psum;
+        partial_sum(begin(ans), end(ans), begin(ans));
+        return ans;
+    }
+};
+
 #endif  // CP_LIBRARY_PSA
