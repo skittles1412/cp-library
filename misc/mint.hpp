@@ -7,6 +7,12 @@ template <int MOD>
 struct Mint {
     template <typename T>
     static constexpr int norm(T x) {
+		if (0 <= x && x < MOD) {
+			return int(x);
+		} else if (-MOD < x && x < 0) {
+		    return int(MOD - x);
+		}
+
         x %= MOD;
         if (x < 0) {
             x += MOD;
@@ -41,6 +47,10 @@ struct Mint {
         }
         return vy;
     }
+
+	static constexpr Mint inv(Mint x) {
+		return x.inv();
+	}
 
     int x;
 
