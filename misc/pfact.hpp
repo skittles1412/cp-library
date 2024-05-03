@@ -64,13 +64,24 @@ struct PFact {
     void enumerate_factors(int x, const Cb& cb) const {
         assert(x);
 
-        auto pf = factorize(x);
-        enumerate_factors(1, 0, pf, cb);
+        enumerate_factors(factorize(x), cb);
     }
 
     vector<int> enumerate_factors(int x) const {
+        assert(x);
+
+        return enumerate_factors(factorize(x));
+    }
+
+    template <typename Cb>
+    static void enumerate_factors(const vector<pair<int, int>>& pf,
+                                  const Cb& cb) {
+        enumerate_factors(1, 0, pf, cb);
+    }
+
+    static vector<int> enumerate_factors(const vector<pair<int, int>>& pf) {
         vector<int> ans;
-        enumerate_factors(x, [&](int o) -> void {
+        enumerate_factors(pf, [&](int o) -> void {
             ans.push_back(o);
         });
         return ans;
@@ -78,10 +89,10 @@ struct PFact {
 
    private:
     template <typename Cb>
-    void enumerate_factors(int cmul,
-                           int ind,
-                           const vector<pair<int, int>>& pf,
-                           const Cb& cb) const {
+    static void enumerate_factors(int cmul,
+                                  int ind,
+                                  const vector<pair<int, int>>& pf,
+                                  const Cb& cb) {
         if (ind == sz(pf)) {
             cb(cmul);
             return;
