@@ -145,10 +145,10 @@ class SegTree {
             assert(0 <= l);
             assert(l < n);
             assert(0 <= r);
-            assert(r < n);
-            assert(l <= r);
+            assert(r <= n);
+            assert(l < r);
         }
-        return query(1, 0, n - 1, l, r + 1);
+        return query(1, 0, n - 1, l, r - 1);
     }
 
     void update_set(int ind, const Node_T& x) {
