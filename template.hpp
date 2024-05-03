@@ -26,8 +26,6 @@ void dbgh(const T& t, const U&... u) {
 
 using u32 = uint32_t;
 using u64 = uint64_t;
-using i128 = __int128_t;
-using u128 = __uint128_t;
 using ld = long double;
 
 #define endl "\n"
