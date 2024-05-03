@@ -37,10 +37,10 @@ ostream& operator<<(ostream& out, const pair<A, B>& p) {
  *
  * If no x in that range is true, returns r
  */
-template <typename Cb>
-int first_true(int l, int r, const Cb& cb) {
+template <typename T, typename Cb>
+T first_true(T l, T r, const Cb& cb) {
     while (l < r) {
-        int mid = (l + r) / 2;
+        T mid = (l + r) / 2;
         if (cb(mid)) {
             r = mid;
         } else {
@@ -55,10 +55,10 @@ int first_true(int l, int r, const Cb& cb) {
  *
  * If no x in that range is true, returns l
  */
-template <typename Cb>
-int last_true(int l, int r, const Cb& cb) {
+template <typename T, typename Cb>
+T last_true(T l, T r, const Cb& cb) {
     while (l < r) {
-        int mid = (l + r + 1) / 2;
+        T mid = (l + r + 1) / 2;
         if (cb(mid)) {
             l = mid;
         } else {
