@@ -85,6 +85,14 @@ T sorted(T arr) {
     return arr;
 }
 
+template <typename T>
+T negated(T arr) {
+    for (auto& a : arr) {
+        a = -a;
+    }
+    return arr;
+}
+
 template <typename T, bool STRICT>
 vector<int> comp_prev_helper(const vector<T>& arr) {
     int n = sz(arr);
@@ -122,7 +130,7 @@ vector<int> comp_prev_helper(const vector<T>& arr) {
  */
 template <typename T>
 vector<int> comp_prev_gt(const vector<T>& arr) {
-    return comp_prev_helper<true>(arr);
+    return comp_prev_helper<T, true>(arr);
 }
 
 /**
@@ -132,7 +140,7 @@ vector<int> comp_prev_gt(const vector<T>& arr) {
  */
 template <typename T>
 vector<int> comp_prev_ge(const vector<T>& arr) {
-    return comp_prev_helper<false>(arr);
+    return comp_prev_helper<T, false>(arr);
 }
 
 /**
@@ -154,7 +162,7 @@ vector<int> reverse_indices(vector<int> arr) {
 /**
  * Computes ans[i], the closest index j to the right of i where arr[j] > arr[i]
  *
- * ans[i] = -1 if no such j exists
+ * ans[i] = n if no such j exists
  */
 template <typename T>
 vector<int> comp_next_gt(vector<T> arr) {
@@ -166,7 +174,7 @@ vector<int> comp_next_gt(vector<T> arr) {
 /**
  * Computes ans[i], the closest index j to the right of i where arr[j] >= arr[i]
  *
- * ans[i] = -1 if no such j exists
+ * ans[i] = n if no such j exists
  */
 template <typename T>
 vector<int> comp_next_ge(vector<T> arr) {
