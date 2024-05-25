@@ -10,7 +10,7 @@ struct Mint {
         if (0 <= x && x < MOD) {
             return int(x);
         } else if (-MOD < x && x < 0) {
-            return int(MOD - x);
+            return int(MOD + x);
         }
 
         x %= MOD;
