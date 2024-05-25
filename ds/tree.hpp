@@ -5,6 +5,7 @@
 #include "graphs/utils.hpp"
 #include "ds/sparse_table.hpp"
 
+// TODO: support for edge weights
 struct Tree {
     int n, root;
     vector<int> depth, par, tin, tout, ord;
@@ -44,6 +45,28 @@ struct Tree {
 
     bool anc(int u, int v) const {
         return tin[u] <= tin[v] && tout[v] <= tout[u];
+    }
+
+    /**
+     * returns all nodes on the path from u to v, in that order
+     */
+    vector<int> path(int u, int v) const {
+        vector<int> v_path;
+        while (!anc(v, u)) {
+            v_path.push_back(v);
+            v = par[v];
+        }
+
+        vector<int> ans;
+        ans.push_back(u);
+        while (u != v) {
+            u = par[u];
+            ans.push_back(u);
+        }
+
+        ans.insert(end(ans), rbegin(v_path), rend(v_path));
+
+        return ans;
     }
 };
 
@@ -86,6 +109,11 @@ struct LCA {
         dbg(tin[u], tin[v], st_ord.query(tin[u], tin[v] + 1).first,
             ord[3].first, ord[4].first);
         return ord[st_ord.query(tin[u], tin[v] + 1).first].first;
+    }
+
+    int dist(int u, int v) const {
+        int l = query(u, v);
+        return tree.depth[u] + tree.depth[v] - 2 * tree.depth[l];
     }
 
     int immediate_child(int u, int v) const {
