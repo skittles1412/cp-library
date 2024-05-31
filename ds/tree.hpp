@@ -106,8 +106,6 @@ struct LCA {
         if (tin[u] > tin[v]) {
             swap(u, v);
         }
-        dbg(tin[u], tin[v], st_ord.query(tin[u], tin[v] + 1).first,
-            ord[3].first, ord[4].first);
         return ord[st_ord.query(tin[u], tin[v] + 1).first].first;
     }
 
