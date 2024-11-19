@@ -5,18 +5,15 @@
 
 using namespace std;
 
-template <typename T, typename... U>
-void dbgh(const T& t, const U&... u) {
-    cerr << t;
-    ((cerr << " | " << u), ...);
-    cerr << endl;
-}
-
 #ifdef DEBUG
 #define dbg(...)                                           \
     cerr << "L" << __LINE__ << " [" << #__VA_ARGS__ << "]" \
          << ": ";                                          \
-    dbgh(__VA_ARGS__)
+    [](const auto& __a, const auto&... __b) -> void {      \
+        cerr << __a;                                       \
+        ((cerr << " | " << __b), ...);                     \
+        cerr << endl;                                      \
+    }(__VA_ARGS__);
 #else
 #define cerr   \
     if (false) \
